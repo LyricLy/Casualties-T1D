@@ -53,7 +53,6 @@ I had to take some liberties to turn this real disease into a game, as you do. H
 - Metformin overdose gives you ketones. This isn't correct (it should be lactic acid) but as they're both acids and the only treatment for acidosis in this mod is to wait for it to clear, I figured it doesn't really
   matter what kind of acid it is.
 - Most item sprites are based directly on real products I've used. Recognize any of them?
-- If you're American, 1 mmol/l is about 18 mg/dl.
 - The experiment is in the early stages of the disease and still has some pancreatic function (a bit of insulin/glucagon production). I took this liberty to make it easier to control levels thanks to a slight push
   toward the 4.0-6.0 mark. It also serves as an abstraction of other factors that affect blood glucose and makes the glucose level "bounce around" a bit, so it's harder to predict and doesn't seem completely linear.
 - Ketone levels and blood acidity are conflated for simplicity. In reality, ketones alone don't necessarily cause acidosis if there is sufficient bicarbonate to keep the pH stable.
