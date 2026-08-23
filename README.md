@@ -1,4 +1,4 @@
-# Type 1 Diabetes (T1D)
+# Type 1 Diabetes (T1D) or: Casualties: Your Pancreas
 
 Makes the experiment type 1 diabetic. You will have to manage your blood glucose and ketones with insulin therapy.
 
