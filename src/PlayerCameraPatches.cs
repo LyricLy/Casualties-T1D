@@ -3,8 +3,6 @@ using HarmonyLib;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Diabetes;
 
@@ -53,6 +51,17 @@ static class PlayerCameraPatches
             );
 
             i++;
+        }
+    }
+
+    [HarmonyPatch(nameof(PlayerCamera.ItemHoverDescription))]
+    [HarmonyPrefix]
+    static void SetRapidInsulinMgDl(Item item)
+    {
+        if (item.id == "rapidinsulin")
+        {
+            Liquids.Registry[item.id].localeName =
+                ModSettings.UseMgDl ? "rapidinsulinmgdl" : "rapidinsulin";
         }
     }
 }

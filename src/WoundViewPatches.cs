@@ -1,3 +1,4 @@
+using CUCoreLib.Registries;
 using CUCoreLib.Helpers;
 using HarmonyLib;
 using UnityEngine;
@@ -35,6 +36,13 @@ static class WoundViewPatches
         return obj.GetComponent<TextMeshProUGUI>();
     }
 
+    static void SetMgDlTooltip()
+    {
+        var tooltip = bloodSugarText.gameObject.GetComponent<UITooltip>();
+        tooltip.localeDesc = ModSettings.UseMgDl ? "hpbloodsugarmgdldsc" : "hpbloodsugardsc";
+        tooltip.tipDesc = LocaleRegistry.Get("other", tooltip.localeDesc, null);
+    }
+
     static Image CreateIcon(GameObject toCopy, string name, Component before, Sprite sprite, Vector2 pos)
     {
         var obj = Object.Instantiate(toCopy, before.transform.parent);
@@ -69,6 +77,9 @@ static class WoundViewPatches
             "hpbloodsugar"
         );
         bloodSugarText.fontSize = 28;
+        SetMgDlTooltip();
+        ModSettings.MgDlChanged += (_, _) => SetMgDlTooltip();
+
         lowBloodSugar = AssetLoader.LoadEmbeddedSprite("hpbglow.png");
         normalBloodSugar = AssetLoader.LoadEmbeddedSprite("hpbgnormal.png");
         highBloodSugar = AssetLoader.LoadEmbeddedSprite("hpbghigh.png");
@@ -87,6 +98,7 @@ static class WoundViewPatches
             "hpketones"
         );
         ketonesText.fontSize = 22;
+
         CreateIcon(
             iconToCopy,
             "KetonesIcon",
@@ -110,7 +122,15 @@ static class WoundViewPatches
     {
         var status = __instance.body.GetStatus<DiabetesStatus>();
 
-        bloodSugarText.text = $"{status.bloodSugar:F1}mmol/l";
+        if (ModSettings.UseMgDl)
+        {
+            bloodSugarText.text = $"{status.bloodSugar * 18:F0}mg/dl";
+        }
+        else
+        {
+            bloodSugarText.text = $"{status.bloodSugar:F1}mmol/l";
+        }
+
         __instance.FlashText(bloodSugarText, status.bloodSugar < 3.0f || status.bloodSugar > 20.0f);
         if (status.bloodSugar <= 4.0f)
         {
