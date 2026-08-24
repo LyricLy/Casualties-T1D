@@ -20,10 +20,7 @@ class ModSettings
                 new ModDropdownChoice("mmol/l", "mmol/l"),
                 new ModDropdownChoice("mg/dl", "mg/dl")
             ],
-            _ => {
-                Diabetes.Logger.LogInfo("sending event");
-                MgDlChanged?.Invoke(typeof(ModSettings), EventArgs.Empty);
-            }
+            _ => MgDlChanged?.Invoke(typeof(ModSettings), EventArgs.Empty)
         ));
     }
 

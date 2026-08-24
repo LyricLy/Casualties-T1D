@@ -13,7 +13,7 @@ namespace Diabetes;
 public class Diabetes : BaseUnityPlugin
 {
     public const string Name = "Diabetes";
-    public const string Version = "1.1.0";
+    public const string Version = "1.1.1";
     public const string GUID = "com.lyricly.diabetes";
 
     internal static new ManualLogSource Logger = null!;

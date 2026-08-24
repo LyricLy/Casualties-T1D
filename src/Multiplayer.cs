@@ -4,6 +4,7 @@ using HarmonyLib;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using LiteNetLib;
 using LiteNetLib.Utils;
 
@@ -45,6 +46,40 @@ struct DiabetesStatusSyncPacket : INetSerializeByMemcpy
     }
 }
 
+class EffectOverTimeSyncPacket : EffectOverTime, INetSerializable
+{
+    public EffectOverTimeSyncPacket() : base(0f, 0f, 0f)
+    {}
+
+    public EffectOverTimeSyncPacket(EffectOverTime eot) : this()
+    {
+        effectRemaining = eot.effectRemaining;
+        targetRate = eot.targetRate;
+        accel = eot.accel;
+        currentRate = eot.currentRate;
+    }
+
+    public void Deserialize(NetDataReader reader)
+    {
+        reader.Get(out float e);
+        reader.Get(out float t);
+        reader.Get(out float a);
+        reader.Get(out float c);
+        effectRemaining = e;
+        targetRate = t;
+        accel = a;
+        currentRate = c;
+    }
+
+    public void Serialize(NetDataWriter writer)
+    {
+        writer.Put(effectRemaining);
+        writer.Put(targetRate);
+        writer.Put(accel);
+        writer.Put(currentRate);
+    }
+}
+
 [System.AttributeUsage(System.AttributeTargets.Class)]
 class MultiplayerPatchAttribute : Attribute
 {}
@@ -61,8 +96,8 @@ class Multiplayer
         reader = reader.DecompressReader();
         reader.Get(out knetid bodyId);
         reader.Get(out DiabetesStatusSyncPacket packet);
-        var boluses = reader.GetArray<EffectOverTime>();
-        var meals = reader.GetArray<EffectOverTime>();
+        var boluses = reader.GetArray<EffectOverTimeSyncPacket>();
+        var meals = reader.GetArray<EffectOverTimeSyncPacket>();
         if (
             NetBody.TryGetNetBodyFromId(bodyId, out var nb)
             && nb._last_sync_health_packet_receive_time <= Time.realtimeSinceStartupAsDouble
@@ -90,8 +125,8 @@ class MedicalSyncPatches
             var status = nb.body.GetStatus<DiabetesStatus>();
             writer.Put(nb.netId);
             writer.Put(new DiabetesStatusSyncPacket(status));
-            writer.PutArray(status.boluses.ToArray());
-            writer.PutArray(status.meals.ToArray());
+            writer.PutArray(status.boluses.Select(e => new EffectOverTimeSyncPacket(e)).ToArray());
+            writer.PutArray(status.meals.Select(e => new EffectOverTimeSyncPacket(e)).ToArray());
             writer.CompressWriter();
             Net.Server_SendToClients(DeliveryMethod.Unreliable, in writer, ServerMain.AllClientIdsExceptHost);
         }
