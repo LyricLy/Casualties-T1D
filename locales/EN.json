@@ -63,6 +63,8 @@
         "metformindsc": "An oral medication that improves insulin sensitivity. Can help keep blood glucose stable.",
         "glucagon": "Glucagon",
         "glucagondsc": "The counterpart to insulin, a hormone that increases blood glucose quickly when injected. Could prove useful in an emergency.",
+        "sweeturine": "Lemonade",
+        "sweeturinedsc": "Sweetened lemon-flavored drink. Tasty, though it smells a bit off.",
         "cqinsulinpen": "Insulin pen",
         "runsetglycogenolysisrate": "Glycogenolysis rate",
         "runsetglycogenolysisratedsc": "The rate at which your blood glucose rises naturally.",
@@ -73,6 +75,7 @@
         "runsetisf": "Insulin sensitivity factor",
         "runsetisfdsc": "The amount by which 1ml of insulin will decrease your blood glucose. A higher number means insulin is more effective.",
         "runsethypotimescale": "Hypoglycemic time scale",
-        "runsethypotimescaledsc": "The speed the blood sugar simulation (not the whole game) runs at while you are hypoglycemic."
+        "runsethypotimescaledsc": "The speed the blood sugar simulation (not the whole game) runs at while you are hypoglycemic.",
+        "sweeturinedoubletake": "...Why is it so sweet?"
     }
 }

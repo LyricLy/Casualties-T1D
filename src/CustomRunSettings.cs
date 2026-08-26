@@ -6,28 +6,28 @@ public static class CustomRunSettings
     {
         RunSettings.settingTypes.Add(new RunSettingFloat("glycogenolysisrate")
         {
-        	limits = new RangeF(0.1f, 10f),
-        	postfix = "x"
+            limits = new RangeF(0.1f, 10f),
+            postfix = "x"
         });
         RunSettings.settingTypes.Add(new RunSettingFloat("pancreaseffect")
         {
-        	limits = new RangeF(0f, 10f),
-        	postfix = "x"
+            limits = new RangeF(0f, 10f),
+            postfix = "x"
         });
         RunSettings.settingTypes.Add(new RunSettingFloat("icr")
         {
-        	limits = new RangeF(1f, 30f),
-        	postfix = "g"
+            limits = new RangeF(1f, 30f),
+            postfix = "g"
         });
         RunSettings.settingTypes.Add(new RunSettingFloat("isf")
         {
-        	limits = new RangeF(1f, 10f),
-        	postfix = "\nmmol/l"
+            limits = new RangeF(1f, 10f),
+            postfix = "\nmmol/l"
         });
         RunSettings.settingTypes.Add(new RunSettingFloat("hypotimescale")
         {
-        	limits = new RangeF(0.1f, 1f),
-        	postfix = "x"
+            limits = new RangeF(0.1f, 1f),
+            postfix = "x"
         });
 
         RunSettingsPreset normal = RunSettings.GetPreset("normal");

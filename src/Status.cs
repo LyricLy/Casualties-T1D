@@ -20,6 +20,7 @@ class DiabetesStatus : BodyStatus
     public float honeymoonTime;
     public List<EffectOverTime> boluses = [new EffectOverTime(0.5f, 0.015f, 0.0001f)];
     public List<EffectOverTime> meals = [];
+    public bool hadSweetUrine;
 
     public float TotalInsulin =>
         meals.Select(e => e.effectRemaining).Sum()

@@ -50,6 +50,7 @@ static class Carbs
         ["producejuice"] = (0.05f, 0.5f),
         ["refinedjuice"] = (0.10f, 0.5f),
         ["milk"] = (0.05f, 1f),
-        ["hotsauce"] = (0.04f, 0.98f)
+        ["hotsauce"] = (0.04f, 0.98f),
+        ["sweeturine"] = (0.05f, 1f)
     };
 }

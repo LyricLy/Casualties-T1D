@@ -3,6 +3,7 @@ using CUCoreLib.Helpers;
 using CUCoreLib.Registries;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace Diabetes;
 
@@ -381,6 +382,7 @@ static class Items
                         body.overdoseIndex = 3;
                     }
                 }, 300f * doses);
+                Sound.Play("pills", body.transform.position);
             }
         });
 
@@ -396,6 +398,38 @@ static class Items
                 status.RaiseBloodSugar(ml / 10f);
             }
         });
+
+        LiquidRegistry.Register("sweeturine", new CustomLiquidInfo
+        {
+            color = new Color32(255, 218, 84, 255),
+            valuePerLiter = 2f,
+            injectionSickness = 2f,
+            onDrink = (float ml, Body body) =>
+            {
+                var status = body.GetStatus<DiabetesStatus>();
+                float litres = ml * 0.001f;
+                body.Drink(70f * litres);
+                body.temperature -= 3f * litres;
+                body.happiness -= 15f * litres;
+                body.sicknessAmount += 65f * litres;
+                body.weightOffset += 2f * litres;
+                body.talker.EatBad();
+                if (!status.hadSweetUrine)
+                {
+                    status.hadSweetUrine = true;
+                    body.StartCoroutine(SweetUrineDoubleTake(body));
+                }
+            },
+            qualities = [
+                new CraftingQuality("water", 0.1f)
+            ]
+        });
+    }
+
+    static IEnumerator SweetUrineDoubleTake(Body body)
+    {
+        yield return new WaitForSeconds(2f);
+        body.talker.Talk(LocaleRegistry.Get("other", "sweeturinedoubletake", null));
     }
 
     public static void AddRecipes()
