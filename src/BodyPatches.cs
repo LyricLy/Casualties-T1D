@@ -99,10 +99,6 @@ static class BodyPatches
             25f * status.ketones,
             0.3f
         );
-        __instance.consciousness = Mathf.Min(
-            __instance.consciousness,
-            100f - 35f * status.KetonesAbove(3.0f)
-        );
         if (status.ketones >= 4.0)
         {
             __instance.adrenaline -= 2f * Time.deltaTime;
@@ -145,7 +141,7 @@ static class BodyPatches
 
         __instance.adrenaline = Utils.RaiseToTarget(
             __instance.adrenaline,
-            50f * status.SugarBelow(4.0f),
+            50f * status.SugarBelow(),
             10f
         );
         __instance.energy -= 0.035f
