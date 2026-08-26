@@ -64,7 +64,7 @@ I had to take some liberties to turn this real disease into a game, as you do. H
 The conviction with which I guarantee compatibility depends on the kind of mod:
 - Multiplayer is supported in v4.0.1 of Casualties: Together. It will break soon when v5 comes out, but I intend to eventually support that version as well. I take responsibility for how this mod works with
   multiplayer and will try to support it as best as I can. Please report any issues with it to me.
+- Casualty Vitals and this mod support each other: for instance, the insulin and glucose items from that mod affect this one, and insulin from this mod affects potassium levels in CV. Issues with this can be reported to me or to yzaCarlos, the author of Casualty Vitals.
 - The mod *should* work fine with unrelated mods that don't affect the health panel. Let me know if there's a conflict: I'll take a look and might fix it (especially if it's my fault). No guarantees.
 - Conflicts are likely to occur with other mods that add information to the health panel or change how it looks, because this mod adds info to it.
   Don't bother reporting this unless you're the author of the mod and want to help improve support. I'm very unlikely to fix these issues.
-- Note for later: integration with Casualty Vitals to make insulin lower potassium would be funny...
