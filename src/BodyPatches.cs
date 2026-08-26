@@ -113,10 +113,12 @@ static class BodyPatches
         status.insulinSensitivity = Utils.Approach(
             status.insulinSensitivity,
             1f
-                * (1f - 0.001f * (100f - __instance.thirst))
+                * (1f - 0.001f * Mathf.Max(100f - __instance.thirst, 0f))
+                * (1f - 0.001f * Mathf.Max(-__instance.happiness, 0f))
+                * (1f - 0.0015f * __instance.averagePain)
                 * (1f - 0.0025f * Mathf.Clamp(__instance.TotalInfection, 0f, 100f))
                 * (1f - 0.0025f * __instance.septicShock)
-                * (1f - 0.002f * __instance.adrenaline)
+                * (1f - 0.003f * __instance.adrenaline)
                 * (1f - 0.006f * __instance.sicknessAmount)
                 * (1f - 0.333f * Mathf.Max(2.5f - status.bloodSugar, 0f))
                 * (1f + 0.02f * (100f - __instance.stamina))
