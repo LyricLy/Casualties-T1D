@@ -162,7 +162,11 @@ static class BodyPatches
             __instance.TryStartFibrillation(forced: true);
         }
 
-        if (__instance.sleeping && (__instance.energy >= 20f && status.bloodSugar < 3.0f))
+        if (
+            __instance.sleeping
+            && (__instance.energy >= 20f && status.bloodSugar < 3.0f)
+            && WorldGeneration.GetRunSettingBool("nosleeprestrictions")
+        )
         {
             __instance.WakeUp();
         }
