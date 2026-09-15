@@ -105,7 +105,7 @@ static class PlayerCameraPatches
 
         var status = PlayerCamera.main.body.GetStatus<DiabetesStatus>();
 
-        RangeF finalEst;
+        RangeF finalEst = new();
 
         if (Carbs.FoodRatios.TryGetValue(item.id, out var food))
         {
@@ -117,7 +117,6 @@ static class PlayerCameraPatches
         }
         else if (item.TryGetComponent<WaterContainerItem>(out var wat))
         {
-            finalEst = new(0f, 0f);
             foreach (LiquidStack stack in wat.stack)
             {
                 if (!Carbs.DrinkRatios.TryGetValue(stack.liquidId, out var drink)) continue;
@@ -126,7 +125,8 @@ static class PlayerCameraPatches
                 finalEst = new(finalEst.min + toAdd.min, finalEst.max + toAdd.max);
             }
         }
-        else
+
+        if (finalEst.min == 0f && finalEst.max == 0f)
         {
             return;
         }
