@@ -76,6 +76,7 @@
         "runsetisfdsc": "The amount by which 1ml of insulin will decrease your blood glucose. A higher number means insulin is more effective.",
         "runsethypotimescale": "Hypoglycemic time scale",
         "runsethypotimescaledsc": "The speed the blood sugar simulation (not the whole game) runs at while you are hypoglycemic.",
-        "sweeturinedoubletake": "...Why is it so sweet?"
+        "sweeturinedoubletake": "...Why is it so sweet?",
+        "carbs": "Carbohydrate: "
     }
 }

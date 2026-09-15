@@ -53,4 +53,6 @@ static class Carbs
         ["hotsauce"] = (0.04f, 0.98f),
         ["sweeturine"] = (0.05f, 1f)
     };
+
+    public const float GramsPerUnit = 450f;
 }

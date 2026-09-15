@@ -202,7 +202,7 @@ static class BodyPatches
     {
         if (!Carbs.FoodRatios.TryGetValue(item.id, out var food)) return;
         var status = __instance.GetStatus<DiabetesStatus>();
-        float carbs = (__state - item.condition) * item.Stats.weight * 450f * food.ratio;
+        float carbs = (__state - item.condition) * item.Stats.weight * Carbs.GramsPerUnit * food.ratio;
         status.EatFastFood(carbs * food.ofWhichSugar);
         status.EatSlowFood(carbs * (1f - food.ofWhichSugar));
     }

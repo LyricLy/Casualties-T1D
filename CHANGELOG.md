@@ -4,6 +4,7 @@
 - Adrenaline reduces insulin sensitivity further than before
 - Added a liquid
 - Low blood sugar no longer affects sleep if sleep restrictions are disabled
+- Experiments can now estimate the amount of carbohydrate in foods and drinks; their ability to do so improves with INT
 
 ## 1.1.0
 - Game no longer crashes when Casualties: Together isn't installed

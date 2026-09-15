@@ -21,6 +21,7 @@ class DiabetesStatus : BodyStatus
     public List<EffectOverTime> boluses = [new EffectOverTime(0.5f, 0.015f, 0.0001f)];
     public List<EffectOverTime> meals = [];
     public bool hadSweetUrine;
+    public Dictionary<(string, bool), RangeF> carbEstimations = new();
 
     public float TotalInsulin =>
         meals.Select(e => e.effectRemaining).Sum()
