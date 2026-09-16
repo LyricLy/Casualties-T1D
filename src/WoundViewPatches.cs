@@ -122,14 +122,7 @@ static class WoundViewPatches
     {
         var status = __instance.body.GetStatus<DiabetesStatus>();
 
-        if (ModSettings.UseMgDl)
-        {
-            bloodSugarText.text = $"{status.bloodSugar * 18:F0}mg/dl";
-        }
-        else
-        {
-            bloodSugarText.text = $"{status.bloodSugar:F1}mmol/l";
-        }
+        bloodSugarText.text = status.DisplaySugar();
 
         __instance.FlashText(bloodSugarText, status.bloodSugar < 3.0f || status.bloodSugar > 20.0f);
         if (status.bloodSugar <= 4.0f)
