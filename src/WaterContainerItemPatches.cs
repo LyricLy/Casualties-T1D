@@ -23,6 +23,19 @@ static class WaterContainerItemPatches
         }
     }
 
+    [HarmonyPatch(nameof(WaterContainerItem.Inject))]
+    [HarmonyPrefix]
+    static void AddInjectionCarbs(WaterContainerItem __instance, Limb limb, float amount)
+    {
+        var status = limb.body.GetStatus<DiabetesStatus>();
+        List<float> amounts = __instance.CalculateDrain(amount);
+        for (int i = 0; i < amounts.Count; i++)
+        {
+            if (!Carbs.DrinkRatios.TryGetValue(__instance.stack[i].liquidId, out var drink)) continue;
+            status.bloodSugar += amounts[i] * drink.ratio * drink.ofWhichSugar * 0.5f;
+        }
+    }
+
     [HarmonyPatch(nameof(WaterContainerItem.UpdateCondition))]
     [HarmonyPrefix]
     static bool PreservePumpCondition(WaterContainerItem __instance)
