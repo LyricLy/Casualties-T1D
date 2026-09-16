@@ -7,6 +7,7 @@
 - Experiments can now estimate the amount of carbohydrate in foods and drinks; their ability to do so improves with INT
 - Injecting sugary liquids will directly increase blood sugar
 - Electronic watches periodically report your blood sugar
+- Metformin and glucagon containers now drop to 0.1u when empty, not 0u
 
 ## 1.1.0
 - Game no longer crashes when Casualties: Together isn't installed

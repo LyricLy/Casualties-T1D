@@ -11,7 +11,11 @@ static class ItemPatches
     [HarmonyPostfix]
     static void WhyIsThisAFeature(Item __instance, ref float __result)
     {
-        if (Items.GetInsulinContainer(__instance) is not null)
+        if (
+            Items.GetInsulinContainer(__instance) is not null
+            || __instance.id == "metformin"
+            || __instance.id == "glucagon"
+        )
         {
             __result = Mathf.Lerp(0.1f, __instance.Stats.weight, __instance.condition);
         }
