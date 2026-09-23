@@ -46,5 +46,6 @@ public class Diabetes : BaseUnityPlugin
         ModSettings.AddSettings();
         CustomRunSettings.AddRunSettings();
         CCLHooks.AddHooks();
+        GlucoseMeterMinigame.LoadAssets();
     }
 }

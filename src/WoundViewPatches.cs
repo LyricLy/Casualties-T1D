@@ -38,7 +38,7 @@ static class WoundViewPatches
 
     static void SetMgDlTooltip()
     {
-        var tooltip = bloodSugarText.gameObject.GetComponent<UITooltip>();
+        var tooltip = bloodSugarText.GetComponent<UITooltip>();
         tooltip.localeDesc = ModSettings.UseMgDl ? "hpbloodsugarmgdldsc" : "hpbloodsugardsc";
         tooltip.tipDesc = LocaleRegistry.Get("other", tooltip.localeDesc, null);
     }
@@ -73,7 +73,7 @@ static class WoundViewPatches
         bloodSugarText = ApeRespiratoryText(
             toCopy,
             "BloodSugarText",
-            new Vector2(74f, 34f),
+            new(74f, 34f),
             "hpbloodsugar"
         );
         bloodSugarText.fontSize = 28;
@@ -88,13 +88,13 @@ static class WoundViewPatches
             "BloodSugarIcon",
             bloodSugarText,
             normalBloodSugar,
-            new Vector2(-20f, 0f)
+            new(-20f, 0f)
         );
 
         ketonesText = ApeRespiratoryText(
             toCopy,
             "KetonesText",
-            new Vector2(74f, -4f),
+            new(74f, -4f),
             "hpketones"
         );
         ketonesText.fontSize = 22;
@@ -104,13 +104,13 @@ static class WoundViewPatches
             "KetonesIcon",
             ketonesText,
             AssetLoader.LoadEmbeddedSprite("hpketones.png"),
-            new Vector2(-18f, 0f)
+            new(-18f, 0f)
         );
 
         insulinSensText = ApeRespiratoryText(
             toCopy,
             "InsulinSensText",
-            new Vector2(74f, 60f),
+            new(74f, 60f),
             "hpinsulinsens"
         );
         insulinSensText.gameObject.SetActive(false);

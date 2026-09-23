@@ -74,9 +74,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="images\\**\\*.png;images\\**\\*.jpg;images\\**\\*.jpeg;assets\\**\\*.png;assets\\**\\*.jpg;assets\\**\\*.jpeg" />
-    <Content Remove="images\\**\\*.png;images\\**\\*.jpg;images\\**\\*.jpeg;assets\\**\\*.png;assets\\**\\*.jpg;assets\\**\\*.jpeg" />
-    <EmbeddedResource Include="images\\**\\*.png;images\\**\\*.jpg;images\\**\\*.jpeg;assets\\**\\*.png;assets\\**\\*.jpg;assets\\**\\*.jpeg" />
+    <None Remove="images\\**\\*.png;images\\**\\*.jpg;images\\**\\*.jpeg;sounds\\**\\*.wav" />
+    <Content Remove="images\\**\\*.png;images\\**\\*.jpg;images\\**\\*.jpeg;sounds\\**\\*.wav" />
+    <EmbeddedResource Include="images\\**\\*.png;images\\**\\*.jpg;images\\**\\*.jpeg;sounds\\**\\*.wav" />
     <EmbeddedResource Include="locales\\EN.json" />
   </ItemGroup>
 

@@ -16,7 +16,10 @@ static class WaterContainerItemPatches
         List<float> amounts = __instance.CalculateDrain(amount);
         for (int i = 0; i < amounts.Count; i++)
         {
-            if (!Carbs.DrinkRatios.TryGetValue(__instance.stack[i].liquidId, out var drink)) continue;
+            if (!Carbs.DrinkRatios.TryGetValue(__instance.stack[i].liquidId, out var drink))
+            {
+                continue;
+            }
             float carbs = amounts[i] * drink.ratio;
             status.EatFastFood(carbs * drink.ofWhichSugar);
             status.EatSlowFood(carbs * (1f - drink.ofWhichSugar));
@@ -31,7 +34,10 @@ static class WaterContainerItemPatches
         List<float> amounts = __instance.CalculateDrain(amount);
         for (int i = 0; i < amounts.Count; i++)
         {
-            if (!Carbs.DrinkRatios.TryGetValue(__instance.stack[i].liquidId, out var drink)) continue;
+            if (!Carbs.DrinkRatios.TryGetValue(__instance.stack[i].liquidId, out var drink))
+            {
+                continue;
+            }
             status.bloodSugar += amounts[i] * drink.ratio * drink.ofWhichSugar * 0.5f;
         }
     }
@@ -49,7 +55,7 @@ static class WaterContainerItemPatches
     {
         if (Items.GetInsulinContainer(__instance.item) is not null)
         {
-            __instance.fillRenderer.gameObject.transform.localEulerAngles = new Vector3(0f, 0f, -90f);
+            __instance.fillRenderer.gameObject.transform.localEulerAngles = new(0f, 0f, -90f);
         }
     }
 

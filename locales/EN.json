@@ -15,7 +15,9 @@
         "insulinpump": "Insulin pump",
         "insulinpumpdsc": "While worn, injects at a fixed rate from a 100ml reservoir. Helps keep your blood glucose stable when used with rapid-acting insulin. Use while wearing to inject 2ml manually for food.",
         "smartinsulinpump": "Smart insulin pump",
-        "smartinsulinpumpdsc": "While worn, injects dynamically from a 100ml reservoir in response to your blood glucose level, keeping it stable when used with rapid-acting insulin. Use while wearing to inject 2ml manually for food."
+        "smartinsulinpumpdsc": "While worn, injects dynamically from a 100ml reservoir in response to your blood glucose level, keeping it stable when used with rapid-acting insulin. Use while wearing to inject 2ml manually for food.",
+        "glucosemeter": "Blood glucose meter",
+        "glucosemeterdsc": "A device that checks the amount of glucose in a drop of blood. Some of the testing strips it uses are taped to the back, along with a lancet. Use on your paw to prick your finger and check your blood glucose."
     },
     "moodle": {
         "honeymoon": "Honeymoon period",
@@ -78,6 +80,7 @@
         "runsethypotimescaledsc": "The speed the blood sugar simulation (not the whole game) runs at while you are hypoglycemic.",
         "sweeturinedoubletake": "...Why is it so sweet?",
         "carbs": "Carbohydrate: ",
-        "watchbloodsugar": "blood glucose: "
+        "watchbloodsugar": "blood glucose: ",
+        "glucoseMeterMinigameGuide": "Apply blood to the end of the test strip, then wait for the reading."
     }
 }

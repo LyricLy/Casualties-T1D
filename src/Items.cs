@@ -209,12 +209,12 @@ static class Items
                 desiredWearLimb = "ThighF",
                 wearSlotId = "insulinpump",
                 wearableVisualOffset = 9,
-                value = 18,
                 useAction = (Body body, Item item) =>
                 {
                     var pump = item.GetComponent<InsulinPump>();
                     pump.GiveManually(body);
                 },
+                value = 18,
                 tags = "medicine",
                 rec = new Recognition(8),
                 Battery = new BatteryProperties
@@ -319,6 +319,33 @@ static class Items
             tags = "medicine",
             rec = new Recognition(6)
         }, AssetLoader.LoadEmbeddedSprite("glucagon.png"));
+
+        ItemRegistry.Register("glucosemeter", new CustomItemInfo
+        {
+            fullName = "stub",
+            description = "stub",
+            category = "medical",
+            slotRotation = 0f,
+            usable = false,
+            usableOnLimb = true,
+            destroyAtZeroCondition = false,
+            weight = 0.3f,
+            useLimbAction = (Limb limb, Item item) =>
+            {
+                if (limb != limb.body.limbs[5] && limb != limb.body.limbs[8] || !item.battery.hasCharge)
+                {
+                    return;
+                }
+                MinigameBase.main.StartMinigame(new GlucoseMeterMinigame(limb), item);
+            },
+            value = 9,
+            tags = "medicine",
+            rec = new Recognition(8),
+            Battery = new BatteryProperties
+            {
+                Preset = BatteryItem.BatteryPreset.Small
+            }
+        }, AssetLoader.LoadEmbeddedSprite("glucosemeter.png"));
     }
 
     public static void AddLiquids()
@@ -468,6 +495,23 @@ static class Items
 
         RecipeRegistry.Register(new Recipe
         {
+            INT = 11,
+            result = new RecipeResult { id = "glucosemeter" },
+            items = [
+                new RecipeItem(0f) { specificId = "lcdscreen" },
+                new RecipeItem(0f) { specificId = "bundleofwires" },
+                new RecipeItem(0f) { specificId = "plasticchunk" },
+                new RecipeItem(0f) { specificId = "plasticchunk" },
+                new RecipeItem(0f) { specificId = "scraptube" },
+                new RecipeItem { specificId = "circuitboard" },
+                new RecipeItem(10f) { specificId = "biochem", isLiquid = true },
+                new RecipeItem(0f) { quality = "hammering", destroyItem = false }
+            ],
+            category = Recipes.RecipeCategory.Medicine
+        });
+
+        RecipeRegistry.Register(new Recipe
+        {
             INT = 12,
             result = new RecipeResult { id = "insulinpump" },
             items = [
@@ -490,6 +534,7 @@ static class Items
             result = new RecipeResult { id = "smartinsulinpump" },
             items = [
                 new RecipeItem(0f) { specificId = "insulinpump" },
+                new RecipeItem(0f) { specificId = "glucosemeter" },
                 new RecipeItem(0f) { specificId = "bundleofwires" },
                 new RecipeItem { specificId = "circuitboard" },
                 new RecipeItem(0f) { specificId = "titaniumsheet" },

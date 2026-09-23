@@ -38,15 +38,14 @@ static class PlayerCameraPatches
         int i = 0;
         foreach (Transform child in __instance.traderInventory)
         {
-            GameObject obj = child.gameObject;
-            if (obj.name != "TraderItemPanel(Clone)")
+            if (child.name != "TraderItemPanel(Clone)")
             {
                 continue;
             }
 
             TraderItem item = __instance.currentTrader.items[i];
             Items.FixInsulinContainerImage(
-                obj.transform.GetChild(0).GetComponent<Image>(),
+                child.GetChild(0).GetComponent<Image>(),
                 Items.GetInsulinContainerByID(item.id),
                 8f,
                 64f
@@ -119,7 +118,10 @@ static class PlayerCameraPatches
         {
             foreach (LiquidStack stack in wat.stack)
             {
-                if (!Carbs.DrinkRatios.TryGetValue(stack.liquidId, out var drink)) continue;
+                if (!Carbs.DrinkRatios.TryGetValue(stack.liquidId, out var drink))
+                {
+                    continue;
+                }
                 // + for RangeF is wrong lol
                 var toAdd = EstimateCarbs(status, (stack.liquidId, true), drink.ratio) * stack.amount;
                 finalEst = new(finalEst.min + toAdd.min, finalEst.max + toAdd.max);
