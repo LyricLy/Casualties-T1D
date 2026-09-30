@@ -28,7 +28,7 @@ static class Carbs
         ["paprikash"] = (0.05f, 0f),
         ["pemmican"] = (0.03f, 0.5f),
         ["pizzaslice"] = (0.50f, 0.1f),
-        ["popcorn"] = (0.75f, 0f),
+        ["popcorn"] = (0.19f, 0f),
         ["stonefruitopen"] = (0.15f, 0f)
     };
 

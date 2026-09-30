@@ -1,3 +1,6 @@
+## 1.2.1
+- Greatly decreased the amount of carbohydrate in popcorn
+
 ## 1.2.0
 - Being overhydrated no longer increases insulin sensitivity
 - Pain and low mood slightly reduce insulin sensitivity
