@@ -3,7 +3,7 @@
     <TargetFramework>net48</TargetFramework>
     <AssemblyName>$(ProjectName)</AssemblyName>
     <Product>Type 1 diabetes in Casualties: Unknown</Product>
-    <Version>1.2.1</Version>
+    <Version>1.3.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
@@ -38,13 +38,8 @@
       <Private>false</Private>
     </Reference>
 
-    <Reference Include="KrokoshaCasualtiesMP" Publicize="true">
-      <HintPath>$(BepInExDir)\plugins\KrokMP\KrokoshaCasualtiesMP.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-
-    <Reference Include="LiteNetLib">
-      <HintPath>$(BepInExDir)\plugins\KrokMP\LiteNetLib.dll</HintPath>
+    <Reference Include="CasualtiesMP" Publicize="true">
+      <HintPath>$(BepInExDir)\plugins\Together\CasualtiesMP.dll</HintPath>
       <Private>false</Private>
     </Reference>
 
@@ -77,7 +72,7 @@
     <None Remove="images\\**\\*.png;images\\**\\*.jpg;images\\**\\*.jpeg;sounds\\**\\*.wav" />
     <Content Remove="images\\**\\*.png;images\\**\\*.jpg;images\\**\\*.jpeg;sounds\\**\\*.wav" />
     <EmbeddedResource Include="images\\**\\*.png;images\\**\\*.jpg;images\\**\\*.jpeg;sounds\\**\\*.wav" />
-    <EmbeddedResource Include="locales\\EN.json" />
+    <EmbeddedResource Include="locales\\EN-com.lyricly.diabetes.json" />
   </ItemGroup>
 
   <PropertyGroup>

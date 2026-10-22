@@ -1,5 +1,22 @@
+## 1.3.0
+- Rebalanced pancreas mechanics
+  - No longer tries to predict where blood sugar will end up, which should fix a lot of weirdness in the simulation
+  - Acts more often and has a stronger effect
+  - This update might feel very different because of these changes
+- Critical dying effects from hypoglycemia take longer to start
+- Pancreas effect setting now goes up to 20x for full pancreatic function (non-diabetic)
+- Hypoglycemia moodle descriptions suggest rest
+- Insulin sensitivity decreases sooner when hypoglycemic
+- Starting blood sugar is 5.0 instead of 6.0
+- Soft cap on how quickly blood sugar can increase
+- Foliage meal has more carbohydrate
+- Foliage now has carbohydrate
+- CUCoreLib 1.0.6 is now required
+- Casualties: Together 5.1.4 is now supported
+- Respawning in MP will reset your blood sugar and such
+
 ## 1.2.1
-- Greatly decreased the amount of carbohydrate in popcorn
+- Popcorn has much less carbohydrate
 
 ## 1.2.0
 - Being overhydrated no longer increases insulin sensitivity

@@ -34,19 +34,17 @@ static class BodyPatches
         status.bloodSugar += DiabetesStatus.GlycogenolysisRate * simTime;
 
         timeSincePancreas += simTime;
-        if (timeSincePancreas >= 30f)
+        if (timeSincePancreas >= 20f)
         {
             timeSincePancreas = 0f;
 
-            float predictedBloodSugar = status.bloodSugar + status.TotalInsulin;
-            if (predictedBloodSugar > 5.6f)
+            if (status.bloodSugar > 5.4f)
             {
-                var toGive = (predictedBloodSugar - 4.0f) * status.PancreasEffect / 2f;
-                status.LowerBloodSugar(toGive);
+                status.LowerBloodSugar(status.SugarAbove(4.0f) * status.PancreasEffect * 0.85f);
             }
-            else if (predictedBloodSugar < 4.4f)
+            else if (status.bloodSugar < 4.0f)
             {
-                status.RaiseBloodSugar((6.0f - predictedBloodSugar) * status.PancreasEffect / 2f);
+                status.RaiseBloodSugar(status.SugarBelow(5.6f) * status.PancreasEffect);
             }
         }
 
@@ -58,9 +56,10 @@ static class BodyPatches
         }
         status.boluses.RemoveAll(e => !e.Active);
 
+        float mealSpeed = Mathf.Clamp01(1f - 2.5f * (status.rateOfChange - 0.1f));
         foreach (EffectOverTime effect in status.meals)
         {
-            status.bloodSugar += effect.Tick(simTime);
+            status.bloodSugar += effect.Tick(simTime * mealSpeed);
         }
         status.meals.RemoveAll(e => !e.Active);
 
@@ -87,12 +86,16 @@ static class BodyPatches
 
         status.bloodSugar = Mathf.Clamp(status.bloodSugar, 0f, 50f);
         status.ketones = Mathf.Clamp(status.ketones, 0f, 6f);
-        status.rateOfChange = Utils.Approach(
-            status.rateOfChange,
-            (status.bloodSugar - startingSugar) / Time.deltaTime,
-            6f
-        );
         status.honeymoonTime -= Time.deltaTime;
+
+        if (Time.deltaTime > 0f)
+        {
+            status.rateOfChange = Utils.Approach(
+                status.rateOfChange,
+                (status.bloodSugar - startingSugar) / Time.deltaTime,
+                6f
+            );
+        }
 
         __instance.sicknessAmount = Utils.RaiseToTarget(
             __instance.sicknessAmount,
@@ -120,7 +123,7 @@ static class BodyPatches
                 * (1f - 0.0025f * __instance.septicShock)
                 * (1f - 0.003f * __instance.adrenaline)
                 * (1f - 0.006f * __instance.sicknessAmount)
-                * (1f - 0.333f * Mathf.Max(2.5f - status.bloodSugar, 0f))
+                * (1f - 0.333f * Mathf.Max(3.0f - status.bloodSugar, 0f))
                 * (1f + 0.02f * (100f - __instance.stamina))
                 * (1f - 0.008f * __instance.weightOffset)
                 * (1f + 0.01f * __instance.tempDiffFromNormal)
@@ -306,7 +309,7 @@ static class BodyPatches
             var status = __instance.GetStatus<DiabetesStatus>();
             __result =
                 status.bloodSugar <= 0.8f
-                || status.bloodSugar <= 3.0f && status.SugarIn() <= 0.4f
+                || status.bloodSugar <= 2.5f && status.SugarIn() <= 0.4f
                 || status.ketones >= 4.0f;
         }
     }

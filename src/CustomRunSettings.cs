@@ -11,7 +11,7 @@ public static class CustomRunSettings
         });
         RunSettings.settingTypes.Add(new RunSettingFloat("pancreaseffect")
         {
-            limits = new RangeF(0f, 10f),
+            limits = new RangeF(0f, 20f),
             postfix = "x"
         });
         RunSettings.settingTypes.Add(new RunSettingFloat("icr")

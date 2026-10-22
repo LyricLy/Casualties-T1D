@@ -11,9 +11,7 @@ class ModSettings
     public static void AddSettings()
     {
         ModOptionsRegistry.Register(ModOptionDefinition.Dropdown(
-            "lyricly.diabetes.unit",
-            "Blood glucose unit",
-            "Most of the world uses mmol/l; Americans use mg/dl, which is 18×mmol/l.",
+            "lyricly.diabetes.unit", "stub", "stub",
             Setting.SettingCategory.Game,
             0,
             [

@@ -57,10 +57,11 @@ static class WoundViewPatches
         return image;
     }
 
-    public static void ToggleInsulinSens()
+    public static bool ToggleInsulinSens()
     {
         GameObject obj = insulinSensText.gameObject;
         obj.SetActive(!obj.activeSelf);
+        return obj.activeSelf;
     }
 
     [HarmonyPatch(nameof(WoundView.Awake))]

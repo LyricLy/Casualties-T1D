@@ -1,7 +1,6 @@
 using CUCoreLib.Data;
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Diabetes;
 
@@ -10,7 +9,7 @@ class DiabetesStatus : BodyStatus
     public static float ICR => WorldGeneration.GetRunSettingFloat("icr");
     public static float ISF => WorldGeneration.GetRunSettingFloat("isf");
 
-    public float bloodSugar = 6.0f;
+    public float bloodSugar = 5.0f;
     public float rateOfChange;
     public float ketones;
     public float insulinSensitivity = 1f;
@@ -22,11 +21,6 @@ class DiabetesStatus : BodyStatus
     public List<EffectOverTime> meals = [];
     public bool hadSweetUrine;
     public Dictionary<(string, bool), RangeF> carbEstimations = new();
-
-    public float TotalInsulin =>
-        meals.Select(e => e.effectRemaining).Sum()
-        - boluses.Select(e => e.effectRemaining).Sum()
-        * insulinSensitivity;
 
     public static float GlycogenolysisRate => 0.03f * WorldGeneration.GetRunSettingFloat("glycogenolysisrate");
     public float PancreasEffect

@@ -1,7 +1,5 @@
-using CUCoreLib.Networking;
 using HarmonyLib;
 using System.Collections;
-using UnityEngine;
 
 [HarmonyPatch(typeof(WorldGeneration))]
 static class WorldGenerationPatches

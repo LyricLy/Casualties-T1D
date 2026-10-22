@@ -31,9 +31,9 @@
         "ketoacidosis4": "Acute metabolic acidosis",
         "ketoacidosis4dsc": "Your blood has the pH of lemon juice. Your cells are dying off: coma and brain death imminent.",
         "hypoglycemia1": "Going low",
-        "hypoglycemia1dsc": "Something's off. Lay off the insulin and try to eat some sugar.",
+        "hypoglycemia1dsc": "Something's off. Try to eat some sugar. Best not to strain yourself for a while.",
         "hypoglycemia2": "Low blood sugar",
-        "hypoglycemia2dsc": "Weak, shaky, and sweaty. Avoid insulin and eat something sweet to increase your blood glucose.",
+        "hypoglycemia2dsc": "Weak, shaky, and sweaty. Avoid insulin and exercise, and eat something sweet to increase your blood glucose.",
         "hypoglycemia3": "Severe hypoglycemia",
         "hypoglycemia3dsc": "Can't think... Burning up... In urgent need of sugar or glucagon.",
         "hypoglycemia4": "Diabetic coma",
@@ -81,6 +81,8 @@
         "sweeturinedoubletake": "...Why is it so sweet?",
         "carbs": "Carbohydrate: ",
         "watchbloodsugar": "blood glucose: ",
-        "glucoseMeterMinigameGuide": "Apply blood to the end of the test strip, then wait for the reading."
+        "glucoseMeterMinigameGuide": "Apply blood to the end of the test strip, then wait for the reading.",
+        "gamesetlyricly.diabetes.unit": "Blood glucose unit",
+        "gamesetlyricly.diabetes.unitdsc": "Different countries use different measurements for blood glucose. mg/dl = 18×mmol/l."
     }
 }

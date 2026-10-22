@@ -93,6 +93,7 @@ static class Items
             combineable = true,
             weight = 0.3f,
             scaleWeightWithCondition = true,
+            scaleConditionToward = 0.1f,
             capacity = 100f,
             defaultContents = [],
             autoFill = false,
@@ -123,6 +124,7 @@ static class Items
             combineable = true,
             weight = 0.3f,
             scaleWeightWithCondition = true,
+            scaleConditionToward = 0.1f,
             capacity = 100f,
             defaultContents = [],
             autoFill = false,
@@ -153,6 +155,7 @@ static class Items
             combineable = true,
             weight = 0.2f,
             scaleWeightWithCondition = true,
+            scaleConditionToward = 0.1f,
             capacity = 100f,
             defaultContents = [
                 new LiquidStack("rapidinsulin", 100f)
@@ -176,6 +179,7 @@ static class Items
             combineable = true,
             weight = 0.2f,
             scaleWeightWithCondition = true,
+            scaleConditionToward = 0.1f,
             capacity = 100f,
             defaultContents = [
                 new LiquidStack("longinsulin", 100f)
@@ -275,6 +279,7 @@ static class Items
             combineable = true,
             weight = 0.3f,
             scaleWeightWithCondition = true,
+            scaleConditionToward = 0.1f,
             capacity = 100f,
             defaultContents = [
                 new LiquidStack("metformin", 100f)
@@ -302,6 +307,7 @@ static class Items
             combineable = true,
             weight = 0.3f,
             scaleWeightWithCondition = true,
+            scaleConditionToward = 0.1f,
             capacity = 100f,
             defaultContents = [
                 new LiquidStack("glucagon", 100f)

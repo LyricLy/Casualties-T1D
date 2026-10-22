@@ -13,7 +13,7 @@ namespace Diabetes;
 public class Diabetes : BaseUnityPlugin
 {
     public const string Name = "Diabetes";
-    public const string Version = "1.2.1";
+    public const string Version = "1.3.0";
     public const string GUID = "com.lyricly.diabetes";
 
     internal static new ManualLogSource Logger = null!;
@@ -31,12 +31,10 @@ public class Diabetes : BaseUnityPlugin
                 _harmony.CreateClassProcessor(type).Patch();
             }
         }
-        Logger.LogInfo($"Plugin {Name} is loaded!");
 
         if (MultiplayerApi.IsAvailable)
         {
-            Multiplayer.Init();
-            Logger.LogInfo("KrokMP detected, multiplayer patch applied");
+            Logger.LogInfo("Together detected, multiplayer patch applied");
         }
 
         ContentReloadManager.EnableHotReload(GUID);
@@ -47,5 +45,7 @@ public class Diabetes : BaseUnityPlugin
         CustomRunSettings.AddRunSettings();
         CCLHooks.AddHooks();
         GlucoseMeterMinigame.LoadAssets();
+
+        Logger.LogInfo($"Plugin {Name} is loaded!");
     }
 }
