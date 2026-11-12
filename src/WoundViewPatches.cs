@@ -74,10 +74,10 @@ static class WoundViewPatches
         bloodSugarText = ApeRespiratoryText(
             toCopy,
             "BloodSugarText",
-            new(74f, 34f),
+            new(140f, 138f),
             "hpbloodsugar"
         );
-        bloodSugarText.fontSize = 28;
+        bloodSugarText.fontSize = 22;
         SetMgDlTooltip();
         ModSettings.MgDlChanged += (_, _) => SetMgDlTooltip();
 
@@ -95,7 +95,7 @@ static class WoundViewPatches
         ketonesText = ApeRespiratoryText(
             toCopy,
             "KetonesText",
-            new(74f, -4f),
+            new(140f, 105f),
             "hpketones"
         );
         ketonesText.fontSize = 22;
@@ -139,7 +139,7 @@ static class WoundViewPatches
             bloodSugarIcon.sprite = highBloodSugar;
         }
 
-        ketonesText.text = $"{status.ketones:F1}mmol/l";
+        ketonesText.text = $"{status.ketones:F1}";
         __instance.FlashText(ketonesText, status.ketones >= 1.0f);
 
         insulinSensText.text = $"{status.insulinSensitivity:F2}";

@@ -259,7 +259,7 @@ public class GlucoseMeterMinigame : Minigame
                 bg > 33.3f ? "HI"
                 : bg < 1.1f ? "LO"
                 : ModSettings.UseMgDl ? $"{bg * 18:F0}" : $"{bg:F1}";
-            unitDisplay.text = ModSettings.UseMgDl ? $"mg/dl" : $"mmol/l";
+            unitDisplay.text = DiabetesStatus.DisplayUnit;
             game.currentItem.battery.DrainCharge(1f / 90f);
             applyBlood.enabled = false;
             Sound.Play(glucoseMeterEnd, Vector2.zero, twoDimensional: true, pitchShift: false);

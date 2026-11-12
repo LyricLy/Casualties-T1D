@@ -45,5 +45,6 @@ class DiabetesStatus : BodyStatus
     public void EatFastFood(float carbs) => meals.Add(new EffectOverTime(carbs / ICR * ISF, 0.03f, 5f));
     public void EatSlowFood(float carbs) => meals.Add(new EffectOverTime(carbs / ICR * ISF, 0.005f, 40f));
 
-    public string DisplaySugar() => ModSettings.UseMgDl ? $"{bloodSugar * 18:F0}mg/dl" : $"{bloodSugar:F1}mmol/l";
+    public string DisplaySugar() => ModSettings.UseMgDl ? $"{bloodSugar * 18:F0}" : $"{bloodSugar:F1}";
+    public static string DisplayUnit => ModSettings.UseMgDl ? "mg/dl" : "mmol/l";
 }

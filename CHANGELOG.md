@@ -1,3 +1,6 @@
+## 1.3.1
+- Moved the blood sugar and ketones displays to a new spot on the health panel, since the space I was using is now used for opioid level
+
 ## 1.3.0
 - Rebalanced pancreas mechanics
   - No longer tries to predict where blood sugar will end up, which should fix a lot of weirdness in the simulation

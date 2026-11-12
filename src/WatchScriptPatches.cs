@@ -49,7 +49,11 @@ class WatchScriptPatches
         {
             data.sugarCheckTime = 0f;
             data.lastReportedSugar = status.bloodSugar;
-            __instance.talker.Talk(LocaleRegistry.Get("other", "watchbloodsugar", null) + status.DisplaySugar());
+            __instance.talker.Talk(
+                LocaleRegistry.Get("other", "watchbloodsugar", null)
+                + status.DisplaySugar()
+                + DiabetesStatus.DisplayUnit
+            );
         }
     }
 }
